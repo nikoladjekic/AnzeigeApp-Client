@@ -1,0 +1,183 @@
+<div class="col-lg-8 col-md-9 col-sm-10 col-xs-11 m-auto">
+  <div class="card rounded-5">
+
+
+    <div class="card-header">
+      <h3 class="text-center"><i class="fas fa-envelope-open-text"></i>&nbsp; Neue Anzeige:</h3>
+    </div>
+
+
+    <div class="card-body bg-light">
+      <form (ngSubmit)="onSubmit(anzeigeForm.value)" #anzeigeForm="ngForm" method="POST">
+
+        <!-- Company name -->
+        <div class="form-group">
+          <label for="firma">*Firmen Name:</label>
+          <input type="text" class="form-control" id="firma" name="firma" #firma="ngModel"
+            [class.is-invalid]="firma.touched && firma.errors" ngModel required>
+          <small class="text-danger" *ngIf="firma.touched && firma.errors?.required">Firmenname ist erforderlich</small>
+        </div>
+
+        <!-- Subtitle -->
+        <div class="form-group">
+          <label for="subtitle">Untertitel:</label>
+          <input type="text" class="form-control" id="subtitle" name="subtitle" ngModel
+            title="Firmen Motto, Schlagwort, Slogan oder ähnliches">
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+          <label for="address">*Adresse:</label>
+          <input type="text" class="form-control" id="address" name="address" #address="ngModel"
+            [class.is-invalid]="address.touched && address.errors" ngModel required>
+          <small class="text-danger" *ngIf="address.touched && address.errors?.required">Adresse ist
+            erforderlich</small>
+        </div>
+
+        <!-- Bundesland -->
+        <div class="form-group">
+          <label for="bundesland">*Bundesland:</label>
+          <select type="text" class="form-control" id="bundesland" name="bundesland" ngModel required>
+            <option *ngFor="let land of bundesland" [value]="land"> {{ land }} </option>
+          </select>
+        </div>
+
+
+        <!-- GROUP: Workinghours + About us + company services -->
+        <div class="form-row">
+
+          <div class="col-5 pr-2">
+            <div class="form-group">
+              <label for="workinghours">Öffnungszeiten:</label>
+              <table class="table table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <th scope="row">MONTAG</th>
+                    <td><input type="text" class="form-control" id="monday" name="monday" ngModel></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DIENSTAG</th>
+                    <td><input type="text" class="form-control" id="tuesday" name="tuesday" ngModel></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">MITTWOCH</th>
+                    <td><input type="text" class="form-control" id="wednesday" name="wednesday" ngModel></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DONNERSTAG</th>
+                    <td><input type="text" class="form-control" id="thursday" name="thursday" ngModel></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">FREITAG</th>
+                    <td><input type="text" class="form-control" id="friday" name="friday" ngModel></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SAMSTAG</th>
+                    <td><input type="text" class="form-control" id="saturday" name="saturday" ngModel></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SONNTAG</th>
+                    <td><input type="text" class="form-control" id="sunday" name="sunday" ngModel></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-7 border-left pl-3">
+            <div class="form-group">
+              <label for="aboutUs">Über uns:</label>
+              <textarea rows="6" class="form-control" id="aboutUs" name="aboutUs" ngModel></textarea>
+            </div>
+            <div class="form-group">
+              <label for="services">Firmen Services:</label>
+              <textarea rows="4" class="form-control" id="services" name="services" ngModel
+                placeholder="WICHTIG: Services durch Komma trennen"></textarea>
+            </div>
+          </div>
+
+        </div><!-- Group end -->
+
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" class="form-control" id="email" name="email" title="beispiel@abc.com" ngModel>
+        </div>
+
+        <!-- Website -->
+        <div class="form-group">
+          <label for="website">Webseite:</label>
+          <input type="url" class="form-control" id="website" name="website" #website="ngModel"
+            title="z.B. www.google.com"
+            pattern="(www\.)[-a-zA-Z0-9\u00E4\u00F6\u00FC\u00C4\u00D6\u00DC\u00df@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
+            [class.is-invalid]="website.invalid" ngModel>
+          <small class="text-danger" *ngIf="website.errors?.pattern">Die Adresse muss in diesem Format sein:
+            www.beispiel.com</small>
+        </div>
+
+        <!-- Phone number -->
+        <div class="form-group">
+          <label for="phone">*Telefonnummer:</label>
+          <input type="text" class="form-control" id="phone" name="phone" #phone="ngModel" title="z.B. +43 1234 56789"
+            [class.is-invalid]="phone.touched && phone.errors" ngModel required>
+          <small class="text-danger" *ngIf="phone.touched && phone.errors?.required">Telefonnummer ist
+            erforderlich</small>
+        </div>
+
+        <!-- Company logo url -->
+        <div class="form-group">
+          <label for="photoUrl">URL-Adresse des Firmenlogos:</label>
+          <textarea cols="2" class="form-control" id="photoUrl" name="photoUrl" ngModel></textarea>
+        </div>
+
+        <!-- Google maps link -->
+        <div class="form-group">
+          <label for="googleMapsUrl">Google Maps link:</label>
+          <textarea cols="2" class="form-control" id="googleMapsUrl" name="googleMapsUrl" ngModel></textarea>
+        </div>
+
+        <!-- Start date of the Ad -->
+        <div class="form-group">
+          <label for="startDate">*Startdatum der Anzeige:</label>
+          <input type="date" class="form-control" id="startDate" name="startDate" #startDate="ngModel" ngModel required
+            [class.is-invalid]="startDate.touched && startDate.errors">
+          <small class="text-danger" *ngIf="startDate.touched && startDate.errors?.required">Startdatum ist
+            erforderlich</small>
+        </div>
+
+        <!-- End date of the Ad -->
+        <div class="form-group">
+          <label for="endDate">*Enddatum der Anzeige:</label>
+          <input type="date" class="form-control" id="endDate" name="endDate" #endDate="ngModel" ngModel required
+            [class.is-invalid]="endDate.touched && endDate.errors">
+          <small class="text-danger" *ngIf="endDate.touched && endDate.errors?.required">Enddatum ist
+            erforderlich</small>
+        </div>
+
+
+        <br>
+
+
+        <!-- Buttons at the bottom -->
+        <button type="submit" class="btn btn-outline-info mb-2" [disabled]="!anzeigeForm.form.valid"
+          (click)="showTextTimeout()" title="* Pflichtfelder"> Anzeige Veröffentlichen </button>
+
+        &nbsp;
+
+        <button type="button" class="btn btn-outline-danger mb-2" (click)="anzeigeForm.form.reset()">
+          Daten Löschen </button>
+
+        &nbsp;&nbsp;
+
+        <small *ngIf="anzeigeForm.submitted && showMessage" class="text-success">
+          Erfolgreich hochgeladen <i class="fas fa-check"></i>
+        </small>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<br>

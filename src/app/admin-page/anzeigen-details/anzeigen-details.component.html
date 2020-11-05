@@ -1,0 +1,116 @@
+<br>
+<div class="col-xl-8 col-lg-10 col-md-12 col-sm-12 col-xs-12 m-auto animated fadeIn fast">
+  <div class="card rounded-5 p-0" *ngIf="adDetails">
+
+    <!-- title -->
+    <div class="card-header">
+      <div class="row">
+        <a (click)="goBack()" class="btn btn-sm btn-outline-dark ml-1">
+          <i class="fas fa-arrow-left"></i> Zurück
+        </a>
+        <h3 class="col-xs-11 col-10 m-0 pl-0 text-center i-color"> {{ adDetails['firma'] }} </h3>
+      </div>
+    </div>
+
+    <!-- subtitle -->
+    <div class="card-body bg-light">
+      <h4 class="text-center mb-4"> {{ adDetails['subtitle'] }} </h4>
+      <div class="row">
+
+        <!-- company logo -->
+        <div class="col-sm-3 col-xs-4 mb-2 set-padding">
+          <img src="{{adDetails['photoUrl']}}" alt="Logo" width="100%">
+        </div>
+
+        <!-- about us -->
+        <div class="col-sm-9 col-xs-8 text-justify">
+          <span class="i-color">Über uns:</span>
+          <h6 class="mt-1"> {{ adDetails['aboutUs'] }} </h6>
+        </div>
+
+        <div class="col-12">
+          <hr>
+        </div>
+
+        <!-- address -->
+        <div class="col-12 mt-2 text-center">
+          <span class="i-color"><i class="fas fa-map-marker-alt mb-3"></i>&nbsp; Adresse:</span>
+          <h5><i class="fas fa-sm fa-location-arrow"></i>&nbsp;
+            <a href="{{ adDetails['googleMapsUrl'] }}" target="_blank" title="Auf Google Maps anzeigen">
+              {{ adDetails['address'] }} </a>
+          </h5>
+          <h5> {{ adDetails['bundesland'] }} </h5>
+        </div>
+
+        <div class="col-12">
+          <hr>
+        </div>
+
+        <!-- middle two rows: workinghours and services -->
+        <div class="col-sm-6 col-xs-12 mt-2 text-center">
+          <span class="i-color"><i class="far fa-clock mb-3"></i>&nbsp; Öffnungszeiten:</span>
+          <table class="table table-sm table-borderless table-striped">
+            <tbody>
+              <tr>
+                <th scope="row">MONTAG</th>
+                <td> {{ adDetails['workinghours']['monday'] }} </td>
+              </tr>
+              <tr>
+                <th scope="row">DIENSTAG</th>
+                <td> {{ adDetails['workinghours']['tuesday'] }} </td>
+              </tr>
+              <tr>
+                <th scope="row">MITTWOCH</th>
+                <td> {{ adDetails['workinghours']['wednesday'] }} </td>
+              </tr>
+              <tr>
+                <th scope="row">DONNERSTAG</th>
+                <td> {{ adDetails['workinghours']['thursday'] }} </td>
+              </tr>
+              <tr>
+                <th scope="row">FREITAG</th>
+                <td> {{ adDetails['workinghours']['friday'] }} </td>
+              </tr>
+              <tr>
+                <th scope="row">SAMSTAG</th>
+                <td> {{ adDetails['workinghours']['saturday'] }} </td>
+              </tr>
+              <tr>
+                <th scope="row">SONNTAG</th>
+                <td> {{ adDetails['workinghours']['sunday'] }} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-12 xl-hide lg-hide md-hide sm-hide">
+          <hr>
+        </div>
+
+        <div class="col-sm-6 col-xs-12 mt-2 border-left">
+          <span class="i-color"><i class="fas fa-wrench mb-3"></i>&nbsp; Wir bieten:</span>
+          <h6 *ngFor="let item of servicesArr"><i class="fas fa-caret-right i-color"></i>&nbsp; {{ item }} </h6>
+        </div>
+
+
+
+        <!-- bottom contacts -->
+        <div class="col-12 text-center mt-2">
+          <hr>
+          <h6><i class="fas fa-lg fa-envelope i-color"></i> &nbsp; <a href="mailto:{{ adDetails['email'] }}"
+              title="Email senden"> {{ adDetails['email'] }} </a></h6>
+          <hr>
+          <h6><i class="fas fa-lg fa-globe i-color"></i> &nbsp; <a href="http://{{ adDetails['website'] }}"
+              title="Webseite besuchen" target="_blank"> {{ adDetails['website'] }} </a></h6>
+          <hr>
+          <h6><i class="fas fa-lg fa-phone i-color"></i> &nbsp; <a href="tel:{{ adDetails['phone'] }}" title="Anrufen">
+              {{ adDetails['phone'] }} </a></h6>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<br>

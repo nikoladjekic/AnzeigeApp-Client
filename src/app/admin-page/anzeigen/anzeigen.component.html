@@ -1,0 +1,98 @@
+<div class="col-lg-9 col-md-10 col-sm-11 col-xs-12 m-auto table-hover">
+  <div class="card rounded-5">
+
+    <div class="card-header">
+      <div class="row">
+
+        <div class="col">
+          <select type="text" [(ngModel)]="selectedBundesland" (ngModelChange)="resetPageAndGetBundesland()"
+            class="cursor-pointer">
+            <option selected hidden disabled>Bundesland wählen</option>
+            <option *ngFor="let land of bundesland" [value]="land"> {{ land }} </option>
+          </select>
+          <button class="btn" title="Neu Laden" (click)="resetPageAndGetAll()">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+
+        <h3 class="col text-center"><i class="fas fa-mail-bulk"></i>&nbsp; Aktive Anzeigen:</h3>
+
+        <div class="col text-right">
+          <input type="text" placeholder="Suche nach Firmennamen" [(ngModel)]="searchTerm"
+            (ngModelChange)="searchByName(pageNum)">
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="card-body">
+      <table class="table table-striped cursor-pointer m-auto">
+        <tbody>
+          <tr class="row" *ngFor="let anzeige of activeAnzeigenList">
+
+            <td class="col-2 text-center">
+              <img class="img" src="{{anzeige['photoUrl']}}" alt="Anzeige Foto">
+            </td>
+            <td class="col-md-7 col-sm-8">
+              <a routerLink="{{anzeige._id}}" routerLinkActive="router-link-active" title="Details zeigen">
+                <h5><strong> {{ anzeige['firma'] }} </strong></h5>
+                <h6> {{ anzeige['address'] }} </h6>
+                <h6> <i class="fas fa-map-marker-alt"></i> {{ anzeige['bundesland'] }} </h6>
+              </a>
+            </td>
+
+            <td class="col-md-3 col-sm-2 text-center" [class.text-success]="anzeige['services']">
+              <strong class="text-danger" *ngIf="!anzeige['services']">ACHTUNG!</strong>
+              <p *ngIf="!anzeige['services']"><u>Läuft ab am:</u></p>
+              <p *ngIf="anzeige['services']"><u>Bezahlt bis:</u></p>
+              <h5> {{ anzeige['endDate'] | date }} </h5>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- pagination nav -->
+    <nav aria-label="Page navigation example" *ngIf="prevPage || nextPage">
+      <ul class="pagination justify-content-center cursor-pointer">
+
+        <li class="page-item" *ngIf="prevPage && pageNum>3" (click)="firstPageClick()" title="Erste Seite">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo; Erste</span>
+          </a>
+        </li>
+
+        <li class="page-item" *ngIf="prevPage" (click)="prevPageClick()" title="Vorherige Seite">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo; Zurück</span>
+          </a>
+        </li>
+
+        <li class="page-item" *ngIf="prevPage"><a class="page-link" (click)="prevPageClick()"
+            title="Seite {{pageNum-1}}">
+            {{ pageNum - 1 }} </a>
+        </li>
+
+        <li class="page-item"><a class="page-link activePage" title="Aktuelle Seite"> {{ pageNum }} </a>
+        </li>
+
+        <li class="page-item" *ngIf="nextPage"><a class="page-link" (click)="nextPageClick()"
+            title="Seite {{pageNum+1}}">
+            {{ pageNum + 1 }} </a>
+        </li>
+
+        <li class="page-item" *ngIf="nextPage" (click)="nextPageClick()" title="Nächste Seite">
+          <a class="page-link" aria-label="Next">
+            <span aria-hidden="true">Weiter &raquo;</span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+
+  </div>
+</div>

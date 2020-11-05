@@ -1,0 +1,49 @@
+<div class="header">
+  <h4 class="text-center mt-3">Eingelogged als: <strong> {{ userThatLoggedIn }} </strong></h4>
+  <button block="true" class="btn btn-sm btn-warning fl2" (click)="logout()">
+    <i class="fas fa-sign-out-alt"></i> Ausloggen
+  </button>
+</div>
+
+<button block="true" class="btn btn-sm btn-warning ml-3" [routerLink]="['']">
+  <i class="fas fa-arrow-left"></i> Home
+</button>
+
+
+
+<div class="row mb-5">
+
+  <div class="col text-center">
+    <a routerLink='benutzer' routerLinkActive="active"><i class="fas fa-user"></i></a>
+    <h5>Benutzer</h5>
+  </div>
+
+  <div class="col text-center">
+    <a routerLink="anzeigen/neue" routerLinkActive="active"><i class="fas fa-envelope-open-text"></i></a>
+    <h5>Neue Anzeige</h5>
+  </div>
+
+  <div class="col text-center">
+    <a routerLink="anzeigen" routerLinkActive="active"><i class="fas fa-mail-bulk"></i></a>
+    <h5>Aktive Anzeigen</h5>
+  </div>
+
+  <div class="col text-center">
+    <a routerLink="anzeigen/inaktiv" routerLinkActive="active"><i class="fas fa-book-dead"></i></a>
+    <h5>Inaktive Anzeigen</h5>
+  </div>
+
+  <div class="col text-center">
+    <a routerLink="banner" routerLinkActive="active"><i class="fas fa-award"></i></a>
+    <h5>Werbung banner</h5>
+  </div>
+
+  <div class="col text-center">
+    <a routerLink="logs" routerLinkActive="active"><i class="far fa-clipboard"></i></a>
+    <h5>Protokollzähler</h5>
+  </div>
+
+</div>
+
+
+<router-outlet></router-outlet>

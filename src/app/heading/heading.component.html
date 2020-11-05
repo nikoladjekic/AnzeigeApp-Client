@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a routerLink="" title="Neu laden" class="navbar-brand m-0 p-0" (click)="reload()">
+    <img class="logo-1 xs-hide" src="http://localhost:3030/images/01-big-logo.png" alt="Logo">
+    <img class="logo-2 sm-hide md-hide lg-hide xl-hide" src="http://localhost:3030/images/02-favicon.png" alt="Logo">
+  </a>
+
+
+  <ul class="navbar-nav ml-auto">
+    <div class="nav-item input-group alignInputGroup">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="input-icon"> <i class="fas fa-search"></i> </span>
+      </div>
+      <input type="search" class="form-control" placeholder="PLZ, Adresse oder Firmenname"
+        title="Suche nach PLZ, Adresse oder Firmenname" aria-describedby="input-icon" [(ngModel)]="searchTerm"
+        (ngModelChange)="searchByName($event)">
+    </div>
+  </ul>
+
+
+</nav>

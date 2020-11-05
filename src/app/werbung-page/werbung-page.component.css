@@ -1,0 +1,21 @@
+.col-md-2,
+.col-md-8 {
+  padding: 0;
+  background-color: whitesmoke;
+}
+
+.left-banner-img {
+  height: 100%;
+  float: left;
+  left: 0;
+  position: fixed;
+  max-width: 15%;
+}
+
+.right-banner-img {
+  height: 100%;
+  float: right;
+  right: 0;
+  position: fixed;
+  max-width: 15%;
+}
