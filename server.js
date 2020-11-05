@@ -10,12 +10,12 @@ app.use(bodyParser.json());
 
 
 // serve our static html file
-app.use(express.static("./dist/client"));
+app.use(express.static("./dist/front"));
 
 // serve angular application
 app.get("/*", (req, res) => {
     res.sendFile("index.html", {
-        root: "dist/client"
+        root: "dist/front"
     })
 });
 
