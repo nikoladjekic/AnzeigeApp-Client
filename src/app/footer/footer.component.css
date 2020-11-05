@@ -1,0 +1,7 @@
+a {
+    color: inherit;
+}
+
+a:hover {
+    color: rgb(128, 128, 128);
+}
