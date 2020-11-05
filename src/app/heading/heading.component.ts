@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 import { DataSharingService } from "src/services/data-sharing.service";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-heading",
@@ -10,6 +11,7 @@ import { DataSharingService } from "src/services/data-sharing.service";
 export class HeadingComponent implements OnInit {
   searchTerm: string;
   resetPageState: boolean;
+  apiUrl: string = environment.API_URL;
 
   constructor(private _dataShare: DataSharingService) {}
 

@@ -2,12 +2,14 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { Anzeige } from "src/models/anzeige.model";
+import { environment } from "src/environments/environment";
+
 
 @Injectable({
   providedIn: "root",
 })
 export class AnzeigeService {
-  url: string = "http://localhost:3030/api/anzeige";
+  url: string = environment.API_URL + "/api/anzeige";
   limit: number = 3;
 
   constructor(private http: HttpClient) {}

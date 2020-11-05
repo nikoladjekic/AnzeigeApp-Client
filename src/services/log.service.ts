@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
+import { environment } from "src/environments/environment";
+
 @Injectable({
   providedIn: "root",
 })
 export class LogService {
-  url: string = "http://localhost:3030/api/visit";
+  url: string = environment.API_URL + "/api/visit";
   limit: number = 10;
 
   constructor(private _http: HttpClient) {}

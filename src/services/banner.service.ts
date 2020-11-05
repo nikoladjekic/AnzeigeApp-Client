@@ -2,12 +2,14 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { Banner } from "src/models/banner.model";
+import { environment } from "src/environments/environment";
+
 
 @Injectable({
   providedIn: "root",
 })
 export class BannerService {
-  private url: string = "http://localhost:3030/api/banner";
+  private url: string = environment.API_URL + "/api/banner";
 
   constructor(private http: HttpClient) {}
 
